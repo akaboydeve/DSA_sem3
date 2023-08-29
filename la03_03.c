@@ -21,6 +21,13 @@ int main()
         arr[i] = (int *)calloc(column1, sizeof(int));
     }
 
+    for (i = 0; i < k1; i++)
+    {
+        scanf("%d", &j);
+        scanf("%d", &n);
+        scanf("%d", &arr[j][n]);
+    }
+
     printf("Enter Sparce Matrix 2 in 3-tuple format\n");
     scanf("%d", &row2);
     scanf("%d", &column2);
@@ -29,6 +36,13 @@ int main()
     for (i = 0; i < row2; i++)
     {
         arr2[i] = (int *)calloc(column2, sizeof(int));
+    }
+
+    for (i = 0; i < k2; i++)
+    {
+        scanf("%d", &j);
+        scanf("%d", &n);
+        scanf("%d", &arr2[j][n]);
     }
 
     arr3 = (int **)calloc(row1, sizeof(int *));
