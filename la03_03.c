@@ -51,6 +51,14 @@ int main()
         arr3[i] = (int *)calloc(column1, sizeof(int));
     }
 
+    for (i = 0; i < row1; i++)
+    {
+        for (j = 0; j < column1; j++)
+        {
+            arr3[i][j] = arr[i][j] + arr2[i][j];
+        }
+    }
+
     printf("3-Tuple format for Added Resultanted Sparce Matrix\n");
     printf("%d %d %d\n", row1, column1, k1 + k2);
 
