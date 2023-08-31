@@ -34,7 +34,7 @@ void insertAtHeadRef(struct node **head_ref, int data)
 }
 
 // insert at end
-struct node *insertAtEnd(struct node *head, int data)
+void insertAtEnd(struct node *head, int data)
 {
     struct node *ptr = (struct node *)malloc(sizeof(struct node));
     struct node *temp = head;
@@ -45,7 +45,6 @@ struct node *insertAtEnd(struct node *head, int data)
         temp = temp->next;
     }
     temp->next = ptr;
-    return head;
 }
 
 // insert at end using head referance
@@ -62,6 +61,38 @@ void insertAtEndRef(struct node **head_ref, int data)
     temp->next = ptr;
 }
 
+// insert at index
+void insertAtIndex(struct node *head, int index, int data)
+{
+    struct node *ptr = (struct node *)malloc(sizeof(struct node));
+    struct node *temp = head;
+    ptr->data = data;
+    int i = 0;
+    while (i < index - 1 && temp != NULL)
+    {
+        temp = temp->next;
+        i++;
+    }
+    ptr->next = temp->next;
+    temp->next = ptr;
+}
+
+// insert at index using head referance
+void insertAtIndexRef(struct node **head_ref, int index, int data)
+{
+    struct node *ptr = (struct node *)malloc(sizeof(struct node));
+    struct node *temp = *head_ref;
+    ptr->data = data;
+    int i = 0;
+    while (i < index - 1 && temp != NULL)
+    {
+        temp = temp->next;
+        i++;
+    }
+    ptr->next = temp->next;
+    temp->next = ptr;
+}
+
 int main()
 {
     struct node *head = (struct node *)malloc(sizeof(struct node));
@@ -69,13 +100,20 @@ int main()
     head->next = NULL;
     printf("Before Insert\n");
     traverseLinkList(head);
+
     printf("\nAfter Insert at head\n");
     head = insertAtHead(head, 22);
     insertAtHeadRef(&head, 45);
     traverseLinkList(head);
+
     printf("\nAfter Insert at end/tail\n");
-    head = insertAtEnd(head, 65);
+    insertAtEnd(head, 65);
     insertAtEndRef(&head, 70);
+    traverseLinkList(head);
+
+    printf("\nAfter Insert at Index 2\n");
+    insertAtIndex(head, 2, 48);
+    insertAtIndexRef(&head, 2, 62);
     traverseLinkList(head);
 
     return 0;
