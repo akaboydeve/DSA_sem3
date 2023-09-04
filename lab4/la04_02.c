@@ -18,9 +18,14 @@ void traverseLinkList(struct node *head)
 {
     while (head != NULL)
     {
-        printf("Element %d\n", head->data);
+        printf("%d ", head->data);
         head = head->next;
+        if (head != NULL)
+        {
+            printf("-> ");
+        }
     }
+    printf("\n");
 }
 // insert at index
 void insertAtIndex(struct node *head, int index, int data)
@@ -113,13 +118,27 @@ int countNodes(struct node *head)
     }
     return i;
 }
-
+void insertnode(struct node *head, int data)
+{
+    struct node *temp = head;
+}
 int main()
 {
     int flag = 1, n, pos, data;
     struct node *head = (struct node *)malloc(sizeof(struct node));
-    head->data = 0;
     head->next = NULL;
+    struct node *temp = head;
+
+    printf("Enter number of nodes:");
+    scanf("%d", &n);
+    printf("Enter The Elements: ");
+    scanf("%d", &data);
+    head->data = data;
+    for (int i = 1; i < n; i++)
+    {
+        scanf("%d", &data);
+        insertAtEnd(head, data);
+    }
 
     while (flag)
     {
@@ -133,8 +152,9 @@ int main()
         scanf("%d", &n);
         if (n == 1)
         {
-            printf("Enter Position and Data For Insertion\n");
+            printf("Enter Position:\n");
             scanf("%d", &pos);
+            printf("Enter Element:\n");
             scanf("%d", &data);
             insertAtIndex(head, pos, data);
         }
