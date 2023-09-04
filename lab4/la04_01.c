@@ -1,4 +1,4 @@
-/*wap to insert node at beginning on linklist
+/*wap to create 5 nodes in linklist and print
  */
 #include <stdio.h>
 #include <stdlib.h>

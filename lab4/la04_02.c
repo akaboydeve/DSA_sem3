@@ -103,40 +103,64 @@ void insertAtEnd(struct node *head, int data)
     temp->next = ptr;
 }
 
+int countNodes(struct node *head)
+{
+    int i = 0;
+    while (head->next != NULL)
+    {
+        head = head->next;
+        i++;
+    }
+    return i;
+}
+
 int main()
 {
-    int flag = 1, n, ;
+    int flag = 1, n, pos, data;
     struct node *head = (struct node *)malloc(sizeof(struct node));
-    head->data = 20;
+    head->data = 0;
     head->next = NULL;
-    printf("Before Insert\n");
-    traverseLinkList(head);
-
-    printf("\nAfter Insert at head\n");
-    head = insertAtHead(head, 22);
-    traverseLinkList(head);
-
-    printf("\nAfter Insert at end/tail\n");
-    insertAtEnd(head, 65);
-    traverseLinkList(head);
-
-    printf("\nAfter Insert at Index 2\n");
-    insertAtIndex(head, 2, 48);
-    traverseLinkList(head);
-
-    printf("\nAfter Delete at Head 2\n");
-    head = deleteAtHead(head);
-    traverseLinkList(head);
-
-    printf("\nAfter Delete at index 2\n");
-    // deleteAtIndex(head, 2);
-    traverseLinkList(head);
 
     while (flag)
     {
+        printf("1. Insert node at specific position\n");
+        printf("2. Deletion of an element from specific position\n");
+        printf("3. Count nodes\n");
+        printf("4. Traverse the link list\n");
+        printf("5. Exit\n");
+        printf("Enter Choise\n");
+
         scanf("%d", &n);
         if (n == 1)
         {
+            printf("Enter Position and Data For Insertion\n");
+            scanf("%d", &pos);
+            scanf("%d", &data);
+            insertAtIndex(head, pos, data);
+        }
+        else if (n == 2)
+        {
+            printf("Enter Position For Deletion\n");
+            scanf("%d", &pos);
+            deleteAtIndex(head, pos);
+        }
+        else if (n == 3)
+        {
+            printf("No of Nodes in the LinkList %d\n", countNodes(head));
+        }
+        else if (n == 4)
+        {
+            printf("Traversing The LinkList\n");
+            traverseLinkList(head);
+        }
+        else if (n == 5)
+        {
+            printf("Exiting Program");
+            flag = 0;
+        }
+        else
+        {
+            printf("Wrong Input Try again\n");
         }
     }
 
