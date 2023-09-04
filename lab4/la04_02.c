@@ -53,17 +53,33 @@ struct node *deleteAtHead(struct node *head)
 // delete at specific index
 void deleteAtIndex(struct node *head, int index)
 {
-    struct node *ptr = (struct node *)malloc(sizeof(struct node));
+    // struct node *ptr = (struct node *)malloc(sizeof(struct node));
     struct node *temp = head;
+    struct node *temp_prev;
+    int i = 0;
+    while (i < index - 1 && temp != NULL)
+    {
+        temp_prev = temp;
+        temp = temp->next;
+        i++;
+    }
+    temp_prev->next = temp->next;
+    free(temp);
+}
+
+void deleteAtIndex2(struct node *head, int index)
+{
+    // struct node *ptr = (struct node *)malloc(sizeof(struct node));
+    struct node *temp = head;
+    struct node *temp2;
     int i = 0;
     while (i < index - 1 && temp != NULL)
     {
         temp = temp->next;
         i++;
     }
-    ptr->next = temp->next;
-    temp->next = ptr;
-    free(temp);
+    temp->next = temp->next->next;
+    // free(temp);
 }
 
 struct node *insertAtHead(struct node *head, int data)
@@ -73,6 +89,22 @@ struct node *insertAtHead(struct node *head, int data)
     ptr->next = head;
     return ptr;
 }
+
+void insertAtIndex(struct node *head, int index, int data)
+{
+    struct node *ptr = (struct node *)malloc(sizeof(struct node));
+    struct node *temp = head;
+    ptr->data = data;
+    int i = 0;
+    while (i < index - 1 && temp != NULL)
+    {
+        temp = temp->next;
+        i++;
+    }
+    ptr->next = temp->next;
+    temp->next = ptr;
+}
+
 void insertAtEnd(struct node *head, int data)
 {
     struct node *ptr = (struct node *)malloc(sizeof(struct node));
