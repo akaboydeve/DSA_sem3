@@ -27,6 +27,7 @@ void traverseLinkList(struct node *head)
     }
     printf("\n");
 }
+
 // insert at index
 void insertAtIndex(struct node *head, int index, int data)
 {
