@@ -90,21 +90,6 @@ struct node *insertAtHead(struct node *head, int data)
     return ptr;
 }
 
-void insertAtIndex(struct node *head, int index, int data)
-{
-    struct node *ptr = (struct node *)malloc(sizeof(struct node));
-    struct node *temp = head;
-    ptr->data = data;
-    int i = 0;
-    while (i < index - 1 && temp != NULL)
-    {
-        temp = temp->next;
-        i++;
-    }
-    ptr->next = temp->next;
-    temp->next = ptr;
-}
-
 void insertAtEnd(struct node *head, int data)
 {
     struct node *ptr = (struct node *)malloc(sizeof(struct node));
@@ -120,6 +105,7 @@ void insertAtEnd(struct node *head, int data)
 
 int main()
 {
+    int flag = 1, n, ;
     struct node *head = (struct node *)malloc(sizeof(struct node));
     head->data = 20;
     head->next = NULL;
@@ -145,6 +131,14 @@ int main()
     printf("\nAfter Delete at index 2\n");
     // deleteAtIndex(head, 2);
     traverseLinkList(head);
+
+    while (flag)
+    {
+        scanf("%d", &n);
+        if (n == 1)
+        {
+        }
+    }
 
     return 0;
 }
