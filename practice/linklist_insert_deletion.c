@@ -104,6 +104,39 @@ struct node *deleteAtHead(struct node *head)
     return head;
 }
 
+// delete at specific index
+void deleteAtIndex(struct node *head, int index)
+{
+    // struct node *ptr = (struct node *)malloc(sizeof(struct node));
+    struct node *temp = head;
+    struct node *temp_prev;
+    int i = 0;
+    while (i < index - 1 && temp != NULL)
+    {
+        temp_prev = temp;
+        temp = temp->next;
+        i++;
+    }
+    temp_prev->next = temp->next;
+    free(temp);
+}
+
+void deleteAtEnd(struct node *head)
+{
+    // struct node *ptr = (struct node *)malloc(sizeof(struct node));
+    struct node *temp = head;
+    struct node *temp_prev;
+    int i = 0;
+    while (temp != NULL)
+    {
+        temp_prev = temp;
+        temp = temp->next;
+        i++;
+    }
+    temp_prev->next = temp->next;
+    free(temp);
+}
+
 int main()
 {
     struct node *head = (struct node *)malloc(sizeof(struct node));
