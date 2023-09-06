@@ -139,21 +139,32 @@ void search(struct node *head, int data)
             break;
         }
         i++;
+        head = head->next;
     }
     if (!flag)
     {
         printf("Element not Found\n");
     }
 }
-struct node *sortAssending(struct node *head)
+void sortAssending(struct node *head)
 {
     int temp;
-    struct node *ptr1 = head;
-    struct node *ptr2;
-    struct node *ptr3;
-    while (ptr1 != NULL)
+    struct node *ptr, *cpt;
+    ptr = head;
+    while (ptr->next != NULL)
     {
-        ptr2 = ptr1;
+        cpt = ptr->next;
+        while (cpt != NULL)
+        {
+            if (ptr->data > cpt->data)
+            {
+                temp = cpt->data;
+                cpt->data = ptr->data;
+                ptr->data = temp;
+            }
+            cpt = cpt->next;
+        }
+        ptr = ptr->next;
     }
 }
 
@@ -190,17 +201,17 @@ int main()
         scanf("%d", &data);
         insertAtEnd(head, data);
     }
-
+    printf("1. Insert node at specific position\n");
+    printf("2. Deletion of an element from specific position\n");
+    printf("3. Count nodes\n");
+    printf("4. Traverse the link list\n");
+    printf("5. Search\n");
+    printf("6. Sort\n");
+    printf("7. Reverse\n");
+    printf("8. Exit\n");
     while (flag)
     {
-        printf("1. Insert node at specific position\n");
-        printf("2. Deletion of an element from specific position\n");
-        printf("3. Count nodes\n");
-        printf("4. Traverse the link list\n");
-        printf("5. Searchn\n");
-        printf("6. Sort\n");
-        printf("7. Reverse\n");
-        printf("8. Exit\n");
+
         printf("Enter Choise\n");
 
         scanf("%d", &n);
@@ -235,13 +246,15 @@ int main()
         }
         else if (n == 6)
         {
-            printf("Exiting Program");
-            flag = 0;
+            printf("Sorted LinkList");
+            sortAssending(head);
+            traverseLinkList(head);
         }
         else if (n == 7)
         {
-            printf("Exiting Program");
-            flag = 0;
+            printf("Reverse List: ");
+            head = reverseLinkList(head);
+            traverseLinkList(head);
         }
         else if (n == 8)
         {
