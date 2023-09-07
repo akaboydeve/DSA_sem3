@@ -58,9 +58,11 @@ void insertAtIndex(struct node *head, int index, int data)
         ptr = ptr->next;
         i++;
     }
+    ptr2 = ptr->next;
     ptr->next = temp;
+    ptr2->prev = temp;
+    temp->next = ptr2;
     temp->prev = ptr;
-    temp->next = ptr->next;
 }
 
 int main()
