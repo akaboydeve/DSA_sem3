@@ -12,6 +12,7 @@ void traverseList(struct node *head)
 {
     if (head == NULL)
     {
+        printf("\n");
         return;
     }
     else
@@ -65,6 +66,28 @@ void insertAtIndex(struct node *head, int index, int data)
     temp->prev = ptr;
 }
 
+struct node *deleteAtHead(struct node *head)
+{
+    struct node *ptr = head;
+    if (head->next != NULL)
+    {
+        head = head->next;
+        head->prev = NULL;
+    }
+    free(ptr);
+    return head;
+}
+void deleteAtEnd(struct node *head)
+{
+    struct node *ptr = head;
+    while (ptr->next != NULL)
+    {
+        ptr = ptr->next;
+    }
+    ptr->prev->next = NULL;
+    free(ptr);
+}
+
 int main()
 {
     struct node *head;
@@ -89,6 +112,8 @@ int main()
     insertAtEnd(head, 20);
     traverseList(head);
     insertAtIndex(head, 2, 15);
+    traverseList(head);
+    deleteAtEnd(head);
     traverseList(head);
     return 0;
 }
