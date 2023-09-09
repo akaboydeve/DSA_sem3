@@ -186,7 +186,7 @@ struct node *reverseLinkList(struct node *head)
 
 int main()
 {
-    int flag = 1, n, pos, data;
+    int n, pos, data;
     struct node *head = (struct node *)malloc(sizeof(struct node));
     head->next = NULL;
     struct node *temp = head;
@@ -201,6 +201,7 @@ int main()
         scanf("%d", &data);
         insertAtEnd(head, data);
     }
+
     printf("1. Insert node at specific position\n");
     printf("2. Deletion of an element from specific position\n");
     printf("3. Count nodes\n");
@@ -209,7 +210,7 @@ int main()
     printf("6. Sort\n");
     printf("7. Reverse\n");
     printf("8. Exit\n");
-    while (flag)
+    while (1)
     {
 
         printf("Enter Choise\n");
@@ -259,7 +260,7 @@ int main()
         else if (n == 8)
         {
             printf("Exiting Program\n");
-            flag = 0;
+            break;
         }
         else
         {
