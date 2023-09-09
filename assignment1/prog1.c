@@ -56,19 +56,57 @@ void printArray(int a[], int size)
     }
     printf("\n");
 }
-
+int arraySum(int a[], int size)
+{
+    int i, sum = 0;
+    for (i = 0; i < size; i++)
+    {
+        sum = sum + a[i];
+    }
+    return sum;
+}
 int main()
 {
-    int *arr;
-    int i, n, k;
+    // variable declaration
+    int *arr, *arr2;
+    int c = 0, i, j, n, k, sum = 0, arrSum, size;
+
+    // creating DMA array with size n
     printf("Enter The Size of Array\n");
     scanf("%d", &n);
     arr = (int *)malloc(n * sizeof(int));
+
+    // creating DMA array with size that can store combination of all sums
+    size = ((n * (n + 1)) / 2);
+    arr2 = (int *)malloc(size * sizeof(int));
+
+    // taking element input
     printf("Enter The Elemets\n");
     for (i = 0; i < n; i++)
     {
         scanf("%d", arr + i);
     }
-    MergeSort(arr, 0, n);
-    printArray(arr, n);
+
+    arrSum = arraySum(arr, n); // total sum of the array
+
+    // creating all possible sums and storing in array
+    for (i = 0; i < n; i++)
+    {
+        for (j = i; j < n; j++)
+        {
+            for (k = i; k <= j; k++)
+            {
+                sum = sum + arr[k];
+            }
+            arr2[c] = arrSum - sum;
+            c++;
+            sum = 0;
+        }
+    }
+
+    MergeSort(arr2, 0, size); // sorting the sums in array
+
+    printf("Enter The K-th largest: ");
+    scanf("%d", &n);
+    printf("The %d-th largest Sum is: %d\n", n, arr2[size - n]); // printing the K-th largest element
 }
