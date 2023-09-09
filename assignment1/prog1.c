@@ -67,29 +67,29 @@ int arraySum(int a[], int size)
 }
 int main()
 {
-    // variable declaration
+    // variable declaration "Time Complexity O(1)"
     int *arr, *arr2;
     int c = 0, i, j, n, k, sum = 0, arrSum, size;
 
-    // creating DMA array with size n
+    // creating DMA array with size n "Time Complexity O(1)"
     printf("Enter The Size of Array\n");
     scanf("%d", &n);
     arr = (int *)malloc(n * sizeof(int));
 
-    // creating DMA array with size that can store combination of all sums
+    // creating DMA array with size that can store combination of all sums "Time Complexity O(1)"
     size = ((n * (n + 1)) / 2);
     arr2 = (int *)malloc(size * sizeof(int));
 
-    // taking element input
+    // taking element input "Time Complexity O(n)"
     printf("Enter The Elemets\n");
     for (i = 0; i < n; i++)
     {
         scanf("%d", arr + i);
     }
 
-    arrSum = arraySum(arr, n); // total sum of the array
+    arrSum = arraySum(arr, n); // total sum of the array "Time Complexity O(n)"
 
-    // creating all possible sums and storing in array
+    // creating all possible sums and storing in array "Time Complexity O(n^3) because 3 loops upto n"
     for (i = 0; i < n; i++)
     {
         for (j = i; j < n; j++)
@@ -104,9 +104,10 @@ int main()
         }
     }
 
-    MergeSort(arr2, 0, size); // sorting the sums in array
+    MergeSort(arr2, 0, size); // sorting the sums in array "Time Complexity O(n log n) "
 
     printf("Enter The K-th largest: ");
     scanf("%d", &n);
     printf("The %d-th largest Sum is: %d\n", n, arr2[size - n]); // printing the K-th largest element
 }
+// Time complexity of the program O(n^3)

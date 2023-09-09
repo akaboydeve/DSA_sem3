@@ -91,31 +91,37 @@ void removeDuplicate(int a[], int b[], int *size)
 
 int main()
 {
+    // variable declaration "Time Complexity O(1)"
     int *arr, *arr2;
     int size, size2, n, i, k;
+
+    // taking size input "Time Complexity O(1)"
     printf("Enter The Size of Array\n");
     scanf("%d", &size);
 
+    // creating 2 DMA array with same size n "Time Complexity O(1)"
     size2 = size;
     arr = (int *)malloc(size * sizeof(int));
     arr2 = (int *)calloc(size2, sizeof(int));
 
+    // taking input in the array "Time Complexity O(n)"
     printf("Enter The Elemets\n");
     for (i = 0; i < size; i++)
     {
         scanf("%d", arr + i);
     }
 
-    sortDesend(arr, size); // sorting the array in desending order
+    sortDesend(arr, size); // sorting the array in desending order "Time Complexity O(n^2)"
 
-    sortOccurrence(arr, size); // sorting the array according to occurrences or frequency
+    sortOccurrence(arr, size); // sorting the array according to occurrences or frequency "Time Complexity O(n^3)"
 
-    removeDuplicate(arr, arr2, &size2); // removing duplicate items = deleting items that has more than 1 occurrences
+    removeDuplicate(arr, arr2, &size2); // removing duplicate items = deleting items that has more than 1 occurrences "Time Complexity O(n^3)"
 
     printf("Enter K: \n");
     scanf("%d", &k);
 
-    printArray(arr2, k); // printing the new array upto K
+    printArray(arr2, k); // printing the new array upto K "Time Complexity O(n)"
 
     return 0;
 }
+// Time complexity of the program O(n^3)
