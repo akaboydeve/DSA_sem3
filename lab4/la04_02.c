@@ -114,7 +114,7 @@ void insertAtEnd(struct node *head, int data)
 
 int countNodes(struct node *head)
 {
-    int i = 0;
+    int i = 1;
     while (head->next != NULL)
     {
         head = head->next;
