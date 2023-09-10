@@ -11,9 +11,14 @@ void traverseLinkList(struct node *head)
 {
     while (head != NULL)
     {
-        printf("Element %d\n", head->data);
+        printf("%d", head->data);
         head = head->next;
+        if (head != NULL)
+        {
+            printf(" -> ");
+        }
     }
+    printf("\n");
 }
 // insert data at start
 struct node *insertAtHead(struct node *head, int data)
@@ -137,6 +142,19 @@ void deleteAtEnd(struct node *head)
     free(temp);
 }
 
+void deleteAtElement(struct node *head, int data)
+{
+    struct node *temp1 = head;
+    struct node *temp_prev;
+    while (temp1 != NULL && temp1->data != data)
+    {
+        temp_prev = temp1;
+        temp1 = temp1->next;
+    }
+    temp_prev->next = temp1->next;
+    free(temp1);
+}
+
 int main()
 {
     struct node *head = (struct node *)malloc(sizeof(struct node));
@@ -156,12 +174,16 @@ int main()
     traverseLinkList(head);
 
     printf("\nAfter Insert at Index 2\n");
-    insertAtIndex(head, 2, 48);
+    insertAtIndex(head, 2, 40);
     insertAtIndexRef(&head, 2, 62);
     traverseLinkList(head);
 
     printf("\nAfter Delete at Head 2\n");
     head = deleteAtHead(head);
+    traverseLinkList(head);
+
+    printf("\nAfter Delete at element 40 \n");
+    deleteAtElement(head, 40);
     traverseLinkList(head);
 
     return 0;
