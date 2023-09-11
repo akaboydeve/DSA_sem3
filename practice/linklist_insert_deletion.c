@@ -52,6 +52,24 @@ void insertAtEnd(struct node *head, int data)
     temp->next = ptr;
 }
 
+void insertAtEndII(struct node **head, int data)
+{
+    struct node *ptr = (struct node *)malloc(sizeof(struct node));
+    struct node *temp = *head;
+    ptr->data = data;
+    ptr->next = NULL;
+    if (*head == NULL)
+    {
+        *head = ptr;
+        return;
+    }
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+    temp->next = ptr;
+}
+
 // insert at end using head referance
 void insertAtEndRef(struct node **head_ref, int data)
 {
@@ -158,33 +176,43 @@ void deleteAtElement(struct node *head, int data)
 int main()
 {
     struct node *head = (struct node *)malloc(sizeof(struct node));
-    head->data = 20;
-    head->next = NULL;
-    printf("Before Insert\n");
+    head = NULL;
+    // head->data = 20;
+    // head->next = NULL;
+    printf("LinkList\n");
+
+    insertAtEndII(&head, 65);
+    traverseLinkList(head);
+    insertAtEndII(&head, 66);
+    insertAtEndII(&head, 67);
+
     traverseLinkList(head);
 
-    printf("\nAfter Insert at head\n");
-    head = insertAtHead(head, 22);
-    insertAtHeadRef(&head, 45);
-    traverseLinkList(head);
+    // printf("Before Insert\n");
+    // traverseLinkList(head);
 
-    printf("\nAfter Insert at end/tail\n");
-    insertAtEnd(head, 65);
-    insertAtEndRef(&head, 70);
-    traverseLinkList(head);
+    // printf("\nAfter Insert at head\n");
+    // head = insertAtHead(head, 22);
+    // insertAtHeadRef(&head, 45);
+    // traverseLinkList(head);
 
-    printf("\nAfter Insert at Index 2\n");
-    insertAtIndex(head, 2, 40);
-    insertAtIndexRef(&head, 2, 62);
-    traverseLinkList(head);
+    // printf("\nAfter Insert at end/tail\n");
+    // insertAtEnd(head, 65);
+    // insertAtEndRef(&head, 70);
+    // traverseLinkList(head);
 
-    printf("\nAfter Delete at Head 2\n");
-    head = deleteAtHead(head);
-    traverseLinkList(head);
+    // printf("\nAfter Insert at Index 2\n");
+    // insertAtIndex(head, 2, 40);
+    // insertAtIndexRef(&head, 2, 62);
+    // traverseLinkList(head);
 
-    printf("\nAfter Delete at element 40 \n");
-    deleteAtElement(head, 40);
-    traverseLinkList(head);
+    // printf("\nAfter Delete at Head 2\n");
+    // head = deleteAtHead(head);
+    // traverseLinkList(head);
+
+    // printf("\nAfter Delete at element 40 \n");
+    // deleteAtElement(head, 40);
+    // traverseLinkList(head);
 
     return 0;
 }
