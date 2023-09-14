@@ -91,4 +91,4 @@ int main()
 
     return 0;
 }
-// Time Complexity of the Program is O(n^2)
+// Time Complexity of the Program is O(n)
