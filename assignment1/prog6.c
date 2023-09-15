@@ -1,58 +1,94 @@
 /*Given a matrix, sort the rows of matrix in ascending order followed by sorting the
 columns in descending order
 */
-void merge(int a[][], int low, int mid, int high)
-{
-    int i = low, j = mid + 1, k = low, b[high + 1];
 
-    while (i <= mid && j <= high)
+#include <stdio.h>
+#include <stdlib.h>
+
+void printArray(int **a, int row, int col)
+{
+    int i, j;
+    for (i = 0; i < row; i++)
     {
-        if (a[i] < a[j])
+        for (j = 0; j < col; j++)
         {
-            b[k] = a[i];
-            i++;
-            k++;
+            printf("%d\t", a[i][j]);
         }
-        else
-        {
-            b[k] = a[j];
-            j++;
-            k++;
-        }
-    }
-    while (i <= mid)
-    {
-        b[k] = a[i];
-        i++;
-        k++;
-    }
-    while (j <= high)
-    {
-        b[k] = a[j];
-        j++;
-        k++;
-    }
-    for (i = low; i <= high; i++)
-    {
-        a[i] = b[i];
+        printf("\n");
     }
 }
-void MergeSort(int a[][], int low, int high)
+
+void sortRow(int **a, int row, int col)
 {
-    int mid;
-    if (low < high)
+    int i, j, k, key;
+    for (i = 0; i < row; i++)
     {
-        mid = (low + high) / 2;
-        MergeSort(a, low, mid);
-        MergeSort(a, mid + 1, high);
-        merge(a, low, mid, high);
+        for (j = 1; j < col; j++)
+        {
+            key = a[i][j];
+            k = j - 1;
+            while (a[i][k] > key && k >= 0)
+            {
+                a[i][k + 1] = a[i][k];
+                k--;
+            }
+            a[i][k + 1] = key;
+        }
     }
 }
-void printArray(int a[], int size)
+
+void sortCol(int **a, int row, int col)
 {
-    for (int i = 0; i < size; i++)
+    int i, j, k, key;
+    for (i = 0; i < row; i++)
     {
-        printf("%d ", a[i]);
+        for (j = 1; j < col; j++)
+        {
+            key = a[j][i];
+            k = j - 1;
+            while (a[k][i] < key && k >= 0)
+            {
+                a[k][i] = a[k][i];
+                k--;
+            }
+            a[k + 1][i] = key;
+        }
     }
-    printf("\n");
+}
+
+int main()
+{
+    int **arr, row, col, n, i, j;
+
+    printf("Enter the row size:");
+    scanf("%d", &row);
+    printf("Enter the col size:");
+    scanf("%d", &col);
+
+    arr = (int **)malloc(row * sizeof(int *));
+    for (i = 0; i < col; i++)
+    {
+        arr[i] = (int *)malloc(col * sizeof(int));
+    }
+
+    printf("Enter the Elements:");
+    for (i = 0; i < row; i++)
+    {
+        for (j = 0; j < col; j++)
+        {
+            scanf("%d", &arr[i][j]);
+        }
+    }
+    printf("Orginal array\n");
+    printArray(arr, row, col);
+
+    printf("\nArray after row sort\n");
+    sortRow(arr, row, col);
+    printArray(arr, row, col);
+
+    printf("\nArray after col sort\n");
+    sortCol(arr, row, col);
+    printArray(arr, row, col);
+
+    return 0;
 }
