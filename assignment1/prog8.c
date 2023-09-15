@@ -22,7 +22,7 @@ int arraySum(int **arr, int row, int col)
 
 int main()
 {
-    int **arr, row, col, n, i, j;
+    int **arr, row, col, i, j;
 
     printf("Enter the  size:");
     scanf("%d", &row);
