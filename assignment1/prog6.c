@@ -46,9 +46,9 @@ void sortCol(int **a, int row, int col)
         {
             key = a[j][i];
             k = j - 1;
-            while (a[k][i] < key && k >= 0)
+            while (k >= 0 && a[k][i] < key)
             {
-                a[k][i] = a[k][i];
+                a[k + 1][i] = a[k][i];
                 k--;
             }
             a[k + 1][i] = key;
