@@ -83,7 +83,6 @@ int main()
         ptr1 = ptr1->next;
     }
     ptr1 = tuple;
-    ptr1 = tuple;
     ptr1->value = value;
 
     printf("sparse matrix in 3-tuple format\n");
