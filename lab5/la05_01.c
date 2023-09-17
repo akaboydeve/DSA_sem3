@@ -176,23 +176,5 @@ int main()
         }
     }
 
-    traverseList(head);
-
-    // head = insertAtHead(head, 10);
-    // traverseList(head);
-
-    // insertAtEnd(head, 20);
-    // // traverseList(head);
-
-    // insertAtIndex(head, 2, 15);
-    // traverseList(head);
-
-    // deleteAtEnd(head);
-    // traverseList(head);
-
-    printf("List after delete index 2\n");
-    deleteAtIndex(head, 2);
-    traverseList(head);
-
     return 0;
 }

@@ -50,8 +50,10 @@ int main()
 {
     int row, col, value, i, j;
     struct node *matrix = (struct node *)malloc(sizeof(struct node));
+    matrix = NULL;
     struct node *tuple = (struct node *)malloc(sizeof(struct node));
-    struct node *ptr1 = matrix;
+    tuple = NULL;
+    struct node *ptr1;
 
     printf("Enter the size of the sparse matrix:\n");
     scanf("%d", &row);
@@ -66,9 +68,11 @@ int main()
             insertSparce(&matrix, i, j, value);
         }
     }
-    printf("Here");
     value = 0;
     insertSparce(&tuple, row, col, value);
+
+    ptr1 = matrix;
+
     while (ptr1 != NULL)
     {
         if (ptr1->value != 0)
