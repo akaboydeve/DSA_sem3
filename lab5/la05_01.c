@@ -167,7 +167,7 @@ int main()
         }
         else if (n == 3)
         {
-            printf("Exiting Program");
+            printf("Exiting Program\n");
             break;
         }
         else
