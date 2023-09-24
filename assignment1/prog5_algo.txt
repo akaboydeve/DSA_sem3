@@ -1,0 +1,50 @@
+Here's the algorithm for the `detectAndRemoveLoop` function and the overall program in pseudocode:
+
+1. Define a structure for a singly-linked list node:
+   struct node {
+       int data;
+       struct node *next;
+   }
+
+2. Function traverseLinkList(head):
+   a. If head is NULL, return
+   b. Print head's data
+   c. If head's next is not NULL, print " -> "
+   d. Recursively call traverseLinkList with head's next
+
+3. Function detectAndRemoveLoop(head):
+   a. Initialize two pointers fast_ptr and slow_ptr to head
+   b. Initialize a pointer prev_ptr to NULL
+   c. Initialize a variable isLoopPresent to 0
+   d. Initialize a variable k to 1
+   e. In a loop, while slow_ptr, fast_ptr, and fast_ptr->next are not NULL:
+      i. Move slow_ptr one step ahead
+      ii. Move fast_ptr two steps ahead
+      iii. If slow_ptr is equal to fast_ptr, set isLoopPresent to 1 and break
+   f. If isLoopPresent is 1:
+      i. Reset slow_ptr to head
+      ii. In a loop, while slow_ptr is not equal to fast_ptr:
+          - Move slow_ptr and fast_ptr one step ahead until they meet again
+          - Increment k for each step
+      iii. Reset slow_ptr to head and move fast_ptr k steps ahead
+      iv. In a loop, while slow_ptr's next is not equal to fast_ptr:
+          - Move slow_ptr and fast_ptr one step ahead
+      v. Set slow_ptr's next to NULL (breaking the loop)
+   g. Return isLoopPresent
+
+4. Main function:
+   a. Initialize a pointer head to NULL
+   b. Create nodes for a linked list and initialize their values to create a loop
+   c. Call detectAndRemoveLoop(head) to check for and remove a loop
+   d. If a loop is present:
+      - Print "Loop present"
+      - Call traverseLinkList(head) to print the list (now without a loop)
+   e. If a loop is not present, print "Loop not present"
+
+5. End of the program
+
+The time complexity of the program is as follows:
+- Memory allocation and input creation: O(1) (constant because the number of nodes is fixed)
+- Detecting and removing a loop: O(n)
+- Printing the list: O(n)
+So, the overall time complexity of the program is O(n).

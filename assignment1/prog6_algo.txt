@@ -1,0 +1,50 @@
+Here's the algorithm for the given C program, which sorts the rows of a matrix in ascending order and then sorts the columns of the matrix in descending order:
+
+1. Function printArray(arr, row, col):
+   a. Iterate over the elements of the 2D array arr with 'row' rows and 'col' columns:
+      i. Print arr[i][j] followed by a tab character
+      ii. After each row, print a newline character to move to the next row
+   b. End the function
+
+2. Function sortRow(arr, row, col):
+   a. Iterate over each row 'i' from 0 to row-1:
+      i. Iterate over each element 'j' in the row from 1 to col-1:
+         - Initialize key as arr[i][j]
+         - Initialize k as j - 1
+         - While k >= 0 and arr[i][k] > key:
+            - Shift arr[i][k] to arr[i][k+1]
+            - Decrement k by 1
+         - Set arr[i][k+1] to key
+
+3. Function sortCol(arr, row, col):
+   a. Iterate over each column 'i' from 0 to col-1:
+      i. Iterate over each element 'j' in the column from 1 to row-1:
+         - Initialize key as arr[j][i]
+         - Initialize k as j - 1
+         - While k >= 0 and arr[k][i] < key:
+            - Shift arr[k][i] to arr[k+1][i]
+            - Decrement k by 1
+         - Set arr[k+1][i] to key
+
+4. Main function:
+   a. Declare variables arr (a pointer to a pointer), row, col, i, j.
+   b. Read the number of rows 'row' and columns 'col' from the user.
+   c. Allocate memory for the 2D array 'arr' with 'row' rows and 'col' columns.
+   d. Read the elements of the matrix into 'arr'.
+   e. Print "Original array" using printArray.
+   f. Call sortRow to sort the rows of 'arr' in ascending order.
+   g. Print "Array after row sort" using printArray.
+   h. Call sortCol to sort the columns of 'arr' in descending order.
+   i. Print "Array after col sort" using printArray.
+   j. Free the memory allocated for 'arr'.
+   k. End of the program.
+
+5. End of the program.
+
+The time complexity of the program is as follows:
+- Memory allocation: O(row * col)
+- Reading elements into the array: O(row * col)
+- Sorting rows: O(row * col * log(col)) for each row
+- Sorting columns: O(row * col * log(row)) for each column
+- Printing the array: O(row * col)
+So, the overall time complexity of the program is dominated by the sorting steps, making it approximately O(row * col * log(row * col)).

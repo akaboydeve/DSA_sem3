@@ -1,0 +1,26 @@
+Here's the algorithm for the given C program, which calculates the sum of elements in a matrix where each element is defined as `mat[i][j] = floor((i+1)/(j+1))`:
+
+1. Function arraySum(arr, row, col):
+   a. Initialize a variable sum to 0.
+   b. Iterate over the elements of the 2D array arr with 'row' rows and 'col' columns using nested loops:
+      i. Add arr[i][j] to the sum.
+   c. Return the sum.
+
+2. Main function:
+   a. Declare variables arr (a pointer to a pointer), row, col, i, j.
+   b. Read the size 'row' from the user. Set col to the same value.
+   c. Allocate memory for the 2D array 'arr' with 'row' rows and 'col' columns.
+   d. Initialize the matrix elements using the formula `mat[i][j] = floor((i + 1) / (j + 1))` for 0 <= i < row and 0 <= j < col.
+   e. Calculate the sum of all matrix elements using the arraySum function.
+   f. Print the sum of the array elements.
+   g. Free the memory allocated for 'arr'.
+   h. End of the program.
+
+3. End of the program.
+
+The time complexity of the program is as follows:
+- Memory allocation: O(row * col)
+- Initializing matrix elements: O(row * col)
+- Calculating the sum of all elements: O(row * col)
+- Printing the result: O(1)
+So, the overall time complexity of the program is approximately O(row * col).

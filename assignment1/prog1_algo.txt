@@ -1,0 +1,36 @@
+The code you provided is for finding the K-th largest sum of subarrays of an input array. Here's a step-by-step algorithm for the code:
+
+1. Import necessary libraries: Include the standard input/output and standard library header files.
+
+2. Define a merge function:
+   - Merge two sorted arrays into a single sorted array.
+
+3. Define a MergeSort function:
+   - Recursively split the array into smaller subarrays until each subarray contains only one element.
+   - Merge the subarrays while sorting them in the process.
+
+4. Define a printArray function:
+   - Print the elements of an array.
+
+5. Define an arraySum function:
+   - Calculate the sum of elements in an array and return it.
+
+6. In the main function:
+   - Declare necessary variables and dynamic memory arrays for input.
+   - Read the size of the array (n) from the user.
+   - Allocate memory for the input array and another array (arr2) to store all possible sums.
+   - Read the elements of the array from the user.
+   - Calculate the sum of all elements in the input array (arrSum).
+   - Initialize variables for looping and sum calculations.
+   - Calculate all possible sums of subarrays and store them in arr2.
+   - Sort the arr2 array using the MergeSort function.
+   - Read the value of K (K-th largest) from the user.
+   - Print the K-th largest sum from the sorted arr2 array.
+
+The time complexity of the program is as follows:
+- Memory allocation and input reading: O(n)
+- Sum calculation and storing in arr2: O(n^3)
+- Sorting arr2 using MergeSort: O(n log n)
+- Printing the K-th largest sum: O(1)
+
+So, the overall time complexity of the program is O(n^3) due to the nested loops for calculating all possible sums.

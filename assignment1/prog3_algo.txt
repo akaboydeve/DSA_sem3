@@ -1,0 +1,57 @@
+Here's the algorithm for the `removeDuplicates` function and the overall program in pseudocode:
+
+1. Define a structure for a singly-linked list node:
+   struct node {
+       int data;
+       struct node* next;
+   }
+
+2. Function traverseLinkList(head):
+   a. If head is NULL, return
+   b. Print head's data
+   c. If head's next is not NULL, print " -> "
+   d. Recursively call traverseLinkList with head's next
+
+3. Function insertAtEnd(head, data):
+   a. Create a new node temp with data
+   b. Initialize a pointer ptr to head
+   c. Set temp's next to NULL
+   d. If head is NULL, set head to temp and return
+   e. Iterate through the list using ptr until ptr's next is NULL
+      i. Update ptr to ptr's next
+   f. Set ptr's next to temp
+
+4. Function removeDuplicates(head):
+   a. Initialize two pointers ptr1 and ptr2 to head
+   b. Initialize a pointer dup
+   c. Iterate while ptr1's next is not NULL:
+      i. Inside the outer loop, initialize ptr2 to ptr1
+      ii. Iterate while ptr2's next is not NULL:
+         - If ptr1's data is equal to ptr2's next data:
+           i. Set dup to ptr2's next
+           ii. Update ptr2's next to ptr2's next's next (deleting the duplicate node)
+           iii. Free the memory occupied by dup
+         - Else, update ptr2 to ptr2's next
+      iii. Update ptr1 to ptr1's next
+
+5. Main function:
+   a. Initialize a pointer head to NULL
+   b. Read the number of nodes n from the user
+   c. Initialize variables i and data
+   d. Loop i from 0 to n-1:
+      i. Read data from the user
+      ii. Call insertAtEnd(&head, data) to insert data at the end of the list
+   e. Print "The Original list: "
+   f. Call traverseLinkList(head) to print the original list
+   g. Print "Removed Duplicate list: "
+   h. Call removeDuplicates(head) to remove duplicate nodes
+   i. Call traverseLinkList(head) to print the modified list
+
+6. End of the program
+
+The time complexity of the program is as follows:
+- Memory allocation and input reading: O(n)
+- Insertion at the end: O(n)
+- Removing duplicates: O(n^2)
+- Printing the original and modified lists: O(n)
+So, the overall time complexity of the program is O(n^2) due to the removal of duplicates.

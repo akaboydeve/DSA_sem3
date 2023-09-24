@@ -1,0 +1,52 @@
+Here's the algorithm for the given C program that finds the length of the longest palindrome subsequence in a linked list:
+
+1. Define the structure for a linked list node with two fields: data and next.
+
+2. Function traverseLinkList(head):
+   a. If head is NULL, return.
+   b. Iterate through the linked list using a loop or recursion:
+      i. Print the data in the current node.
+      ii. If the current node has a next node, print " -> ".
+   c. End the function.
+
+3. Function insertAtEnd(head, data):
+   a. Create a new node with data and initialize the next pointer to NULL.
+   b. If the linked list is empty (head is NULL), set head to the new node and return.
+   c. Traverse the list to the last node using a loop or recursion:
+      i. Update the current node pointer to point to the next node.
+   d. Set the next pointer of the last node to the new node, effectively adding it to the end of the list.
+
+4. Function countCommon(head1, head2):
+   a. Initialize a variable count to 0.
+   b. Initialize a pointer ptr to head2.
+   c. While head1 is not NULL, head1 is not equal to ptr, and head2 is not NULL:
+      i. If the data in head1 is equal to the data in head2, increment count.
+      ii. Move head1 and head2 to their next nodes.
+   d. Return the count.
+
+5. Function maxPalindrome(head):
+   a. Initialize three pointers: prev = NULL, cur = head, next = NULL.
+   b. Initialize a variable result to 0.
+   c. While cur is not NULL:
+      i. Update next to cur's next node.
+      ii. Reverse the sublist from head to cur (to reverse one step and count the same elements).
+      iii. Check for an odd-length palindrome by finding the longest common list elements between prev and next (excluding cur).
+      iv. Update the result to the maximum of the current result and 2 times the count of common elements plus 1.
+      v. Check for an even-length palindrome by finding the longest common list elements between cur and next.
+      vi. Update the result to the maximum of the current result and 2 times the count of common elements.
+      vii. Update prev to cur, cur to next.
+   d. Return the result.
+
+6. Main function:
+   a. Declare variables head (a pointer to the head of the linked list), n, i, and data.
+   b. Initialize head to NULL.
+   c. Read the number of nodes 'n' from the user.
+   d. Read 'n' elements and insert them at the end of the linked list using insertAtEnd.
+   e. Print the original linked list using traverseLinkList.
+   f. Call the maxPalindrome function to find the maximum palindrome length.
+   g. Print the maximum palindrome length.
+   h. End the program.
+
+7. End of the program.
+
+The time complexity of the program is O(n^2) due to the countCommon function, which may compare elements of the linked list up to n times.

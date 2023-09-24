@@ -1,0 +1,52 @@
+Here's the algorithm for the given C program, which swaps elements pairwise in a singly linked list:
+
+1. Define a structure for a singly-linked list node:
+   struct node {
+       int data;
+       struct node *next;
+   }
+
+2. Function traverseLinkList(head):
+   a. If head is NULL, return
+   b. Print head's data
+   c. If head's next is not NULL, print " -> "
+   d. Recursively call traverseLinkList with head's next
+
+3. Function insertAtEnd(head, data):
+   a. Create a new node temp with data
+   b. Initialize a pointer ptr to head
+   c. Set temp's next to NULL
+   d. If head is NULL, set head to temp and return
+   e. Iterate through the list using ptr until ptr's next is NULL
+      i. Update ptr to ptr's next
+   f. Set ptr's next to temp
+
+4. Function swap(a, b):
+   a. Swap the values of integers pointed to by a and b
+
+5. Function pairWiseSwap(head):
+   a. If head is not NULL and head's next is not NULL:
+      i. Swap the data of head and head's next using swap
+      ii. Recursively call pairWiseSwap on head's next's next
+
+6. Main function:
+   a. Initialize a pointer head to NULL
+   b. Read the number of nodes n from the user
+   c. Initialize variables i and data
+   d. Loop i from 0 to n-1:
+      i. Read data from the user
+      ii. Call insertAtEnd(&head, data) to insert data at the end of the list
+   e. Print "The Original list: "
+   f. Call traverseLinkList(head) to print the original list
+   g. Print "The Swapped list: "
+   h. Call pairWiseSwap(head) to swap elements pairwise
+   i. Call traverseLinkList(head) to print the modified list
+
+7. End of the program
+
+The time complexity of the program is as follows:
+- Memory allocation and input reading: O(n)
+- Insertion at the end: O(n)
+- Swapping elements pairwise: O(n)
+- Printing the original and modified lists: O(n)
+So, the overall time complexity of the program is O(n).

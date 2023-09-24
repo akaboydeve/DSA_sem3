@@ -1,0 +1,43 @@
+Here's the algorithm for the given C program, which modifies the "arbitrary" pointers in a singly linked list to point to the next higher value node:
+
+1. Define the structure for a linked list node with three fields: data, next, and arbit (arbitrary pointer).
+
+2. Function traverseLinkList(head):
+   a. If head is NULL, return.
+   b. Iterate through the linked list using a loop or recursion:
+      i. Print the data in the current node.
+      ii. If the arbitrary pointer is NULL, print "Arbit=NULL."
+      iii. If the arbitrary pointer is not NULL, print "Arbit=data," where data is the data in the node pointed to by the arbitrary pointer.
+      iv. If the current node has a next node, print " -> ".
+   c. End the function.
+
+3. Function insertAtEnd(head, data):
+   a. Create a new node with data and initialize both next and arbit pointers to NULL.
+   b. If the linked list is empty (head is NULL), set head to the new node and return.
+   c. Traverse the list to the last node using a loop or recursion:
+      i. Update the current node pointer to point to the next node.
+   d. Set the next pointer of the last node to the new node, effectively adding it to the end of the list.
+
+4. Function arbit(head):
+   a. Initialize a pointer ptr to the head of the list.
+   b. Traverse the list using a loop or recursion until ptr->next is not NULL:
+      i. If the data in ptr is less than the data in ptr->next:
+         - Set ptr->arbit to point to ptr->next (the next higher value node).
+      ii. Move ptr to the next node.
+   c. After the loop, check if the last node's data is less than the head node's data:
+      i. If true, set the last node's arbit pointer to point to the head node.
+   d. End the function.
+
+5. Main function:
+   a. Declare variables head (a pointer to the head of the linked list), n, i, and data.
+   b. Initialize head to NULL.
+   c. Read the number of nodes 'n' from the user.
+   d. Read 'n' elements and insert them at the end of the linked list using insertAtEnd.
+   e. Print the original linked list using traverseLinkList.
+   f. Call the arbit function to modify the arbitrary pointers.
+   g. Print the linked list again to display the modified "arbitrary" pointers.
+   h. End the program.
+
+6. End of the program.
+
+The time complexity of the program is O(n) since it iterates through the linked list once during insertion and once during the arbit function, and printing is also O(n) in both cases.

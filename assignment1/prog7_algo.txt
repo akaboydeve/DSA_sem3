@@ -1,0 +1,45 @@
+Here's the algorithm for the given C program, which checks if the sum of the i-th row is equal to the sum of the i-th column in a matrix:
+
+1. Function printArray(arr, row, col):
+   a. Iterate over the elements of the 2D array arr with 'row' rows and 'col' columns:
+      i. Print arr[i][j] followed by a tab character
+      ii. After each row, print a newline character to move to the next row
+   b. End the function
+
+2. Function rowSum(arr, row, col, i):
+   a. Initialize a variable sum to 0.
+   b. Iterate over each element in the i-th row of the matrix:
+      i. Add the element to the sum.
+   c. Return the sum.
+
+3. Function colSum(arr, row, col, i):
+   a. Initialize a variable sum to 0.
+   b. Iterate over each element in the i-th column of the matrix:
+      i. Add the element to the sum.
+   c. Return the sum.
+
+4. Main function:
+   a. Declare variables arr (a pointer to a pointer), row, col, i, j.
+   b. Read the number of rows 'row' and columns 'col' from the user.
+   c. Allocate memory for the 2D array 'arr' with 'row' rows and 'col' columns.
+   d. Read the elements of the matrix into 'arr'.
+   e. Read the value of 'i' (which represents the i-th row/column to check).
+   f. Decrement 'i' by 1 to adjust for 0-based indexing.
+   g. Calculate the sum of the i-th row using rowSum.
+   h. Calculate the sum of the i-th column using colSum.
+   i. If the sums of the i-th row and i-th column are equal:
+      - Print "Yes" and the sums.
+   j. If the sums are not equal:
+      - Print "No" and the sums.
+   k. Free the memory allocated for 'arr'.
+   l. End of the program.
+
+5. End of the program.
+
+The time complexity of the program is as follows:
+- Memory allocation: O(row * col)
+- Reading elements into the array: O(row * col)
+- Calculating row sum: O(col)
+- Calculating column sum: O(row)
+- Printing the result: O(1)
+So, the overall time complexity of the program is dominated by the row and column sum calculations, making it approximately O(row + col).

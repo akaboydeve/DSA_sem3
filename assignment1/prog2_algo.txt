@@ -1,0 +1,60 @@
+Here's the algorithm in pseudocode for the given C program, which sorts an array in descending order, sorts it based on occurrences, removes duplicates, and then prints the first K elements:
+
+1. Function printArray(arr, size):
+   a. Iterate over the elements of arr and print each element
+2. Function findOccurrence(arr, size, element):
+   a. Initialize variable k to 0
+   b. Iterate over the elements of arr:
+      i. If the current element is equal to 'element', increment k
+   c. Return k
+3. Function sortOccurrence(arr, size):
+   a. Create a new array b of size 'size'
+   b. Copy the elements of arr into b
+   c. Iterate over the elements of arr:
+      i. For each element a[i]:
+         - Calculate key as findOccurrence(b, size, a[i])
+         - Set key2 as a[i]
+         - Initialize j to i - 1
+         - While j >= 0 and findOccurrence(b, size, a[j]) < key:
+            - Shift a[j] to a[j + 1]
+            - Decrement j
+         - Set a[j + 1] to key2
+4. Function sortDesend(arr, size):
+   a. Iterate over the elements of arr:
+      i. For each element a[i]:
+         - Set key as a[i]
+         - Set key2 as a[i]
+         - Initialize j to i - 1
+         - While j >= 0 and a[j] < key:
+            - Shift a[j] to a[j + 1]
+            - Decrement j
+         - Set a[j + 1] to key
+5. Function removeDuplicate(arr, b, size):
+   a. Copy the elements of arr into b
+   b. Iterate over the elements of arr:
+      i. For each element arr[i]:
+         - Iterate over the elements of b starting from i + 1:
+            - If arr[i] is equal to b[j]:
+               - Shift all elements of b from j + 1 to size - 1 one position left
+               - Decrement size by 1
+6. Main function:
+   a. Declare variables arr, arr2, size, size2, n, i, k
+   b. Read the size of the array 'size' from the user
+   c. Set 'size2' to 'size'
+   d. Allocate memory for arr and arr2
+   e. Read the elements of arr from the user
+   f. Sort arr in descending order using sortDesend
+   g. Sort arr based on occurrences using sortOccurrence
+   h. Remove duplicates from arr and store the result in arr2
+   i. Read the value of K 'k' from the user
+   j. Print the first K elements of arr2 using printArray
+7. End of the program
+
+
+The time complexity of the program is as follows:
+- Memory allocation and input reading: O(n)
+- Sorting in descending order: O(n^2)
+- Sorting based on occurrences: O(n^3)
+- Removing duplicates: O(n^3)
+- Printing the first K elements: O(K)
+So, the overall time complexity of the program is O(n^3).
