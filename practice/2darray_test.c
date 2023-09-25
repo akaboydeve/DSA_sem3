@@ -1,3 +1,4 @@
+// 2d array test
 #include <stdio.h>
 #include <stdlib.h>
 

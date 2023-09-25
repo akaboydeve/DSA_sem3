@@ -1,6 +1,5 @@
-/*Given singly linked list with every node having an additional “arbitrary” pointer
-that currently points to NULL. Need to make the “arbitrary” pointer point to the
-next higher value node
+/*Given a linked list, find the length of the longest palindrome list that exists in that
+linked list.
 */
 
 #include <stdio.h>
@@ -11,7 +10,6 @@ struct node
 {
     int data;
     struct node *next;
-    struct node *arbit;
 };
 
 // traversing the linklist recursively and printing "Time Complexity O(n)"
@@ -25,14 +23,6 @@ void traverseLinkList(struct node *head)
     else
     {
         printf("%d", head->data);
-        if (head->arbit == NULL)
-        {
-            printf(" Arbit=NULL");
-        }
-        else
-        {
-            printf(" Arbit=%d", head->arbit->data);
-        }
         if (head->next != NULL)
         {
             printf(" -> ");
@@ -48,7 +38,6 @@ void insertAtEnd(struct node **head, int data)
     struct node *ptr = *head;
     temp->data = data;
     temp->next = NULL;
-    temp->arbit = NULL;
     if (*head == NULL)
     {
         *head = temp;
@@ -61,21 +50,49 @@ void insertAtEnd(struct node **head, int data)
     ptr->next = temp;
 }
 
-void arbit(struct node *head)
+int countCommon(struct node *head1, struct node *head2)
 {
-    struct node *ptr = head;
-    while (ptr->next != NULL)
+    int count = 0;
+    struct node *ptr = head2;
+    while (head1 != NULL && head1 != ptr && head2 != NULL)
     {
-        if (ptr->data < ptr->next->data)
+        if (head1->data == head2->data)
         {
-            ptr->arbit = ptr->next;
+            count++;
         }
-        ptr = ptr->next;
+        head1 = head1->next;
+        head2 = head2->next;
     }
-    if (ptr->data < head->data)
+    return count;
+}
+
+int maxPalindrome(struct node *head)
+{
+    struct node *prev = NULL, *cur = head, *next = NULL;
+    int result = 0;
+    while (cur != NULL)
     {
-        ptr->arbit = head;
+        // The sublist from head to current
+        // reversed
+        // to reverse 1 step and count same elements
+        next = cur->next;
+        cur->next = prev;
+
+        // check for odd length palindrome
+        // by finding longest common list elements
+        // beginning from prev and from next (We
+        // exclude cur)
+        result = (result > (2 * countCommon(prev, next) + 1)) ? result : (2 * countCommon(prev, next) + 1);
+
+        // check for even length palindrome
+        // by finding longest common list elements
+        // beginning from cur and from next
+        result = (result > (2 * countCommon(cur, next))) ? result : (2 * countCommon(cur, next));
+
+        prev = cur;
+        cur = next;
     }
+    return result;
 }
 
 int main()
@@ -99,9 +116,7 @@ int main()
     printf("The Orginal list: ");
     traverseLinkList(head);
 
-    printf("after changing arbit : ");
-    arbit(head);
-    traverseLinkList(head);
+    printf("Max length of paliindrome is %d\n", maxPalindrome(head));
 
     return 0;
 }

@@ -206,6 +206,7 @@ int main()
     prodPolyLinkList(poly1, poly2, &resultPoly);
     printPoly(resultPoly);
 
+//printing
     samePowSum(resultPoly);
     printPoly(resultPoly);
 
