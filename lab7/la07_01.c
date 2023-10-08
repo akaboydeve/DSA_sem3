@@ -43,14 +43,14 @@ void Push(int data)
     }
     else
     {
+        top = top + 1;
         stack[top] = data;
-        top++;
     }
 }
 
 int Pop()
 {
-    if (isEmpty)
+    if (isEmpty())
     {
         printf("Stack Underflow");
         return -1;
@@ -64,7 +64,7 @@ int Pop()
 
 void PrintStack()
 {
-    for (int i = 0; i <= top; i++)
+    for (int i = top; i >= top; i++)
     {
         printf("%d\n", stack[i]);
     }
@@ -86,14 +86,12 @@ int main()
         if (ch == 1)
         {
             printf("Enter Element to Push\n");
-            scanf("%d", &ch);
+            scanf("%d", &n);
             Push(n);
-            PrintStack();
         }
         else if (ch == 2)
         {
             printf("Element %d is Poped from top\n", Pop());
-            PrintStack();
         }
         else if (ch == 3)
         {
