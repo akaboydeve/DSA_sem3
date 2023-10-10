@@ -97,7 +97,7 @@ int main()
         if (ch == 1)
         {
             printf("Enter Element to Push\n");
-            scanf("%d", &ch);
+            scanf("%d", &n);
             stack = Push(stack, n);
             traverseList(stack);
         }
