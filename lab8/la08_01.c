@@ -7,7 +7,7 @@ Dequeue, Traverse, IsEmpty, IsFull operations.
 
 struct Queue
 {
-    int *q;
+    int *arr;
     int front;
     int rear;
     int size;
@@ -44,7 +44,7 @@ void TraverseQueue(struct Queue *q)
     {
         for (i = q->front; i <= q->rear; i++)
         {
-            printf("%d\t", q->q[i]);
+            printf("%d\t", q->arr[i]);
         }
         printf("\n");
     }
@@ -66,7 +66,7 @@ void EnQueue(struct Queue *q, int x)
         q->front++;
     }
     q->rear++;
-    q->q[q->rear] = x;
+    q->arr[q->rear] = x;
 }
 
 void DeQueue(struct Queue *q)
@@ -94,7 +94,7 @@ int main()
     scanf("%d", &size);
 
     struct Queue *q1 = (struct Queue *)malloc(sizeof(struct Queue));
-    q1->q = (int *)malloc(size * sizeof(int));
+    q1->arr = (int *)malloc(size * sizeof(int));
     q1->front = q1->rear = -1;
     q1->size = size;
 
