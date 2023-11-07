@@ -190,7 +190,7 @@ int main()
 
     inOrder(p);
     printf("\n");
-    deleteNode(p, 60);
+    p = deleteNode(p, 8);
     inOrder(p);
 
     return 0;
