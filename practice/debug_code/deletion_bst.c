@@ -136,6 +136,10 @@ struct node *deleteNode(struct node *root, int value)
 
     if (root == NULL)
     {
+        return root;
+    }
+    else if
+    {
     }
 }
 
