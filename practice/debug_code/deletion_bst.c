@@ -90,35 +90,22 @@ struct node *searchIter(struct node *root, int key)
     return NULL;
 }
 
-void insert(struct node *root, int key)
+struct node *insert(struct node *root, int data)
 {
-    struct node *prev = NULL;
-    while (root != NULL)
+    if (root == NULL)
     {
-        prev = root;
-        if (key == root->data)
-        {
-            printf("Cannot insert %d, already in BST", key);
-            return;
-        }
-        else if (key < root->data)
-        {
-            root = root->left;
-        }
-        else
-        {
-            root = root->right;
-        }
+        root = createNode(data);
+        return root;
     }
-    struct node *new = createNode(key);
-    if (key < prev->data)
+    else if (data <= root->data)
     {
-        prev->left = new;
+        root->left = insert(root->left, data);
     }
     else
     {
-        prev->right = new;
+        root->right = insert(root->right, data);
     }
+    return root;
 }
 
 struct node *inOrderPredecessor(struct node *root)
@@ -131,27 +118,50 @@ struct node *inOrderPredecessor(struct node *root)
     return root;
 }
 
-struct node *deleteNode(struct node *root, int value)
+struct node *deleteNode(struct node *root, int data)
 {
 
     if (root == NULL)
     {
         return root;
     }
-    else if
+    else if (data < root->data)
     {
+        root->left = deleteNode(root->left, data);
+    }
+    else
+    {
+        if (root->left == NULL && root->right == NULL)
+        {
+            root = NULL;
+            return root;
+        }
+        else if (root->left == NULL)
+        {
+            struct node *temp = root;
+            root = root->right;
+            free(temp);
+            return root;
+        }
+        else if (root->right == NULL)
+        {
+            struct node *temp = root;
+            root = root->left;
+            free(temp);
+            return root;
+        }
     }
 }
 
 int main()
 {
 
-    // Constructing the root node - Using Function (Recommended)
-    struct node *p = createNode(5);
-    struct node *p1 = createNode(3);
-    struct node *p2 = createNode(6);
-    struct node *p3 = createNode(1);
-    struct node *p4 = createNode(4);
+    // Constructing the root node - Using Function (Recommended
+    // struct node *p = createNode(5);
+    // struct node *p1 = createNode(3);
+    // struct node *p2 = createNode(6);
+    // struct node *p3 = createNode(1);
+    // struct node *p4 = createNode(4);
     // Finally The tree looks like this:
     //      5
     //     / \
@@ -160,15 +170,23 @@ int main()
     //  1   4
 
     // Linking the root node with left and right children
-    p->left = p1;
-    p->right = p2;
-    p1->left = p3;
-    p1->right = p4;
+    // p->left = p1;
+    // p->right = p2;
+    // p1->left = p3;
+    // p1->right = p4;
+
+    struct node *p = NULL;
+
     insert(p, 8);
+    insert(p, 20);
+    insert(p, 16);
+    insert(p, 22);
+    insert(p, 3);
+    insert(p, 30);
 
     inOrder(p);
     printf("\n");
-    deleteNode(p, 60);
+    p = deleteNode(p, 20);
     inOrder(p);
 
     return 0;
