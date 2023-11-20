@@ -48,23 +48,19 @@ void printInOrder(struct Node *root, int parent, char direction)
 
 int main()
 {
-    // Generate 20 random numbers
     int randomNumbers[20];
     for (int i = 0; i < 20; ++i)
     {
         randomNumbers[i] = rand() % 99 + 1;
     }
 
-    // Initialize the root of the tree
     struct Node *rootNode = NULL;
 
-    // Insert numbers into the tree
     for (int i = 0; i < 20; ++i)
     {
         rootNode = insertNode(rootNode, randomNumbers[i]);
     }
 
-    // Print the tree in in-order with directions
     printf("In-Order Traversal with Directions:\n");
     printInOrder(rootNode, 0, "");
 
